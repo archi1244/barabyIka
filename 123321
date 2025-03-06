@@ -7,7 +7,7 @@
 
 using namespace std;
 
-struct Product {
+struct Product { 
     string name;
     float price;
     int quantity;
@@ -31,8 +31,7 @@ void saveToFile(const vector<Product>& catalog, const string& filename) {
 void addProduct(vector<Product>& catalog, const string& filename) {
     Product newProduct;
     cout << "Название товара: " << endl;
-    cin.ignore();
-    getline(cin, newProduct.name);
+    cin >> newProduct.name;
     cout << "Цена товара: " << endl;
     cin >> newProduct.price;
     cout << "Количество товара: " << endl;
@@ -43,7 +42,6 @@ void addProduct(vector<Product>& catalog, const string& filename) {
     cout << "-------------------------------------------" << endl;
     system("cls");
 }
-
 void buyProducts(vector<Product>& catalog, const string filename) {
     if (catalog.empty()) {
         cout << "Каталог пуст." << endl;
@@ -63,7 +61,8 @@ void buyProducts(vector<Product>& catalog, const string filename) {
         cin >> quantity;
         if (quantity > catalog[choice - 1].quantity) {
             cout << "Недостаточно товара!" << endl;
-        } else {
+        }
+        else {
             catalog[choice - 1].quantity -= quantity;
             cout << "Вы купили " << quantity << " " << catalog[choice - 1].name << " на сумму " << quantity * catalog[choice - 1].price << "!" << endl;
             if (catalog[choice - 1].quantity == 0) {
@@ -75,6 +74,7 @@ void buyProducts(vector<Product>& catalog, const string filename) {
         cin >> continueBuying;
     }
 }
+
 
 void loadFromFile(vector<Product>& catalog, const string& filename) {
     ifstream inFile(filename);
